@@ -1,0 +1,13 @@
+---
+name: Aquasec
+on: # yamllint disable-line rule:truthy
+  push:
+    branches:
+      - master
+  pull_request:
+    types: [ opened, reopened, edited, synchronize ]
+jobs:
+  Aquasec:
+    if: ${{ github.actor != 'dependabot[bot]' }}
+    uses: Ebury/seceng/.github/workflows/aquasec-reusable-workflow.yaml@master
+    secrets: inherit
